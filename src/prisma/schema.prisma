@@ -19,6 +19,8 @@ model User{
   lastname  String
   age Int
   hobby Hobby[]
+ 
+  codingLang Language[]
 }
 
 model Hobby{
@@ -28,5 +30,21 @@ model Hobby{
   user User @relation(fields: [userId], references: [id])
   userId Int
   
+
+
+}
+
+model Language{
+  id  Int @id @default(autoincrement())
+  languageName String
+  langdesc String
+  rating Int @default(0)
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ 
+
+
 
 }

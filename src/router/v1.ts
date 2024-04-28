@@ -11,7 +11,7 @@ v1Router.get("/", (req, res) => {
 v1Router.post("/user", async (req, res) => {
   console.log("here");
   console.log(req.body);
-  const { x, y, age, hobby } = req.body;
+  const { x, y, age, hobby, language } = req.body;
   // console.log(hobby);
   const userEntry = await prisma.user.create({
     data: {
@@ -20,6 +20,9 @@ v1Router.post("/user", async (req, res) => {
       age: age,
       hobby: {
         create: hobby,
+      },
+      codingLang: {
+        create: language,
       },
     },
   });
